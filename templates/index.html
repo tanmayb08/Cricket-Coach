@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crick Coach</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+
+<body class="dark">
+  <button id="darkModeToggle" class="dark-toggle" title="Toggle dark/light" style="-bottom: 20px;">🌙</button>
+  <main class="hero-wrap">
+    <div class="hero-shell">
+      <!-- Header -->
+      <header class="hero-header">
+        <div class="brand">Crick Coach</div>
+        <nav class="hero-nav">
+          <a href="#">Home</a>
+          <a href="#features">Features</a>
+          <a href="#team">Team</a>
+        </nav>
+      </header>
+
+      <!-- Body -->
+      <section class="hero-body">
+        <div class="headline">
+          <h1>Coach in your pocket<br /><span class="sub">Smart Insights & Stats</span></h1>
+        </div>
+
+        <aside class="hero-cta">
+          <p class="lead">Upload or drag & drop your cricket videos to get instant AI-powered analysis and insights.</p>
+
+          <!-- Upload form -->
+          <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data" class="upload-box"
+            id="uploadForm">
+            <input type="file" name="video" id="videoUpload" accept="video/*" hidden />
+            <label for="videoUpload" class="upload-label">Choose a Video</label>
+            <p class="hint">or drag & drop here</p>
+
+            <!-- Preview area (hidden until a file is selected) -->
+            <div id="previewContainer" class="preview" style="display:none;">
+              <video id="previewVideo" controls playsinline></video>
+              <div id="previewName" class="preview-name"></div>
+            </div>
+
+            <button type="submit" class="btn">Upload</button>
+          </form>
+
+          <!-- Feedback from server (flashed messages) -->
+          <div class="messages">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for m in messages %}
+            <div class="message">{{ m }}</div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+          </div>
+
+          <!-- Stats cards -->
+          <div class="numbers-row">
+            <div class="card big">
+              <div class="num">192k</div>
+              <div class="caption">Frames processed</div>
+            </div>
+            <div class="card med">
+              <div class="num">34</div>
+              <div class="caption">Insights generated</div>
+            </div>
+          </div>
+        </aside>
+
+
+        <!-- Buttons hidden until user uploads any video -->
+        <!-- Preview area (hidden until a file is selected) -->
+        <!-- <div id="previewContainer" class="preview" style="display:none;">
+          <video id="previewVideo" controls playsinline></video>
+          <div id="previewName" class="preview-name"></div> -->
+
+        <!-- Analysis controls shown after user selects/uploads-->
+        <div id="analysisControls" class="analysis-controls" style="display:none;">
+          <!-- <button id="analyzeHeatBtn" class="btn outline" >Analyze Bowling HeatMap & Wagon Wheel</button> -->
+
+          <div class="container">
+            <span id="symbol"></span> <!-- Symbol element -->
+            <span id="word"></span> <!-- Word element -->
+          </div>
+
+          <a id="loading_spinner" href={{ url_for('analyze_heatwagon') }}>Analyze Heatmap and Wagon Wheel</a>
+          <button id="analyzeTrajBtn" class="btn outline">Analyze Bowling Trajectory & On-field Detection</button>
+          <div id="analysisStatus" class="analysis-status" aria-live="polite"></div>
+        </div>
+    </div>
+    </form>
+
+
+    <!-- Button End -->
+
+    </section>
+    <br>
+    <!-- Features Section -->
+    <section id="features" class="features">
+      <h2 class="features-title">Key Features</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>🏏 Heatmap Generation</h3>
+          <p>Visualize player movements and activity across the field using AI-powered heatmaps.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🎯 Wagon Wheel Analysis</h3>
+          <p>Track batting shots and directions to generate accurate wagon wheel charts.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>📊 Ball Trajectory</h3>
+          <p>Detect and track ball flight paths to analyze line, length, and swing.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>⚡ Real-time Insights</h3>
+          <p>Process uploaded cricket videos instantly and provide actionable statistics.</p>
+        </div>
+      </div>
+    </section>
+    <br>
+    <!-- Team Section -->
+    <section id="team" class="features">
+      <h2 class="features-title">Our Gem💎's</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Vaibhav Bhagat</h3>
+          <p>All Rounder</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Soham Kate</h3>
+          <p>AI Researcher</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Shrisant Barate</h3>
+          <p>Data Scientist</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Tanmay Bhosale</h3>
+          <p>Common Man</p>
+        </div>
+      </div>
+    </section>
+    </div>
+  </main>
+
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

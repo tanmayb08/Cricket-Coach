@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Crick Coach</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+
+<body class="dark">
+    <main class="hero-wrap">
+        <div class="hero-shell">
+            <!-- Header -->
+            <header class="hero-header">
+                <div class="brand">Crick Coach</div>
+                <nav class="hero-nav">
+                    <a href="#">Home</a>
+                    <a href="#features">Features</a>
+                    <a href="#team">Team</a>
+                    <button id="darkModeToggle" class="dark-toggle" title="Toggle dark/light">🌙</button>
+                </nav>
+            </header>
+            <!-- Body -->
+            <section class="hero-body">
+                        <div class="num">Heatmap</div>
+                        <div class="A"><img src="{{ file_url }}" alt="Heatmap"></div>
+                    
+                        <div class="num">Wagon Wheel</div>
+                        <div class="caption"><img src="outputs/wagon_wheel.png" alt="Wagon Wheel"></div>
+
+
+
+                <!-- Buttons hidden until user uploads any video -->
+                <!-- Preview area (hidden until a file is selected) -->
+                <!-- <div id="previewContainer" class="preview" style="display:none;">
+          <video id="previewVideo" controls playsinline></video>
+          <div id="previewName" class="preview-name"></div> -->
+
+                <!-- Analysis controls shown after user selects/uploads-->
+
+                <a href={{ url_for('index') }}>Analyze more</a>
+
+
+
+                <!-- Button End -->
+
+            </section>
+            <br>
+            <!-- Features Section -->
+            <section id="features" class="features">
+                <h2 class="features-title">Key Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>🏏 Heatmap Generation</h3>
+                        <p>Visualize player movements and activity across the field using AI-powered heatmaps.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>🎯 Wagon Wheel Analysis</h3>
+                        <p>Track batting shots and directions to generate accurate wagon wheel charts.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>📊 Ball Trajectory</h3>
+                        <p>Detect and track ball flight paths to analyze line, length, and swing.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>⚡ Real-time Insights</h3>
+                        <p>Process uploaded cricket videos instantly and provide actionable statistics.</p>
+                    </div>
+                </div>
+            </section>
+            <br>
+            <!-- Team Section -->
+            <section id="team" class="features">
+                <h2 class="features-title">Our Gem💎's</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Vaibhav Bhagat</h3>
+                        <p>All Rounder</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Soham Kate</h3>
+                        <p>AI Researcher</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Shrisant Barate</h3>
+                        <p>Data Scientist</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Tanmay Bhosale</h3>
+                        <p>Common Man</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
